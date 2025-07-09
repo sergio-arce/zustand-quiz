@@ -1,46 +1,30 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Container, Stack, Typography } from '@mui/material'
 import './App.css'
-import { create } from 'zustand'
-import Button from '@mui/material/Button';
-
-interface StoreState {
-  count: number
-  inc: () => void
-  dec: () => void
-}
-
-const useStore = create<StoreState>((set) => ({
-  count: 0,
-  inc: () => set((state) => ({ count: state.count + 1 })),
-  dec: () => set((state) => ({ count: state.count - 1 })),
-}));
+import { JavaScriptLogo } from './assets/JavaScriptLogo'
+import { Start } from './Start'
+import { useQuestionStore } from './store/questions'
 
 function App() {
 
-  const { count, inc, dec } = useStore()
+  const questions = useQuestionStore(state => state.questions)
+
+  console.log({questions})
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <Button onClick={inc}>
-          +
-        </Button>
-        <span>{count}</span>
-        <Button onClick={dec}>
-          -
-        </Button>
-      </div>
-    </>
+    <main>
+      <Container maxWidth="sm">
+        <Stack direction="row" gap={2} alignItems="center" justifyContent="center">
+          <JavaScriptLogo />
+          <Typography variant='h2' component="h1">
+            Zustand Quiz
+          </Typography>
+        </Stack>
+      </Container>
+
+      <Start />
+     
+    </main>
   )
 }
 

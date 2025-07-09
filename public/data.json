@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "question": "¿Cuál es la salida de este código?",
+    "code": "console.log(typeof NaN)",
+    "answers": ["undefined", "NaN", "string", "number"],
+    "correctAnswer": 3
+  },
+  {
+    "id": 2,
+    "question": "¿Qué imprime este código?",
+    "code": "console.log(1 + '2' + '2')",
+    "answers": ["'122'", "'32'", "'14'", "NaN"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 3,
+    "question": "¿Cuál es el resultado?",
+    "code": "console.log([] == ![])",
+    "answers": ["true", "false", "Error", "undefined"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 4,
+    "question": "¿Qué devuelve este código?",
+    "code": "console.log([1, 2, 3].map(num => num * 2))",
+    "answers": ["[2, 4, 6]", "[1, 2, 3]", "[]", "undefined"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 5,
+    "question": "¿Cuál es la salida?",
+    "code": "console.log('hello' instanceof String)",
+    "answers": ["true", "false", "Error", "undefined"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 6,
+    "question": "¿Qué imprime este código?",
+    "code": "let x = 5;\nsetTimeout(() => {\n  console.log(x);\n}, 0);\nx = 10;",
+    "answers": ["5", "10", "undefined", "null"],
+    "correctAnswer": 1
+  }
+]
