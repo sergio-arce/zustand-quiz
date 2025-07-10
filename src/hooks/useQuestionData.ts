@@ -8,7 +8,6 @@ export const useQuestionData = () => {
   let unanswered = 0
 
   questions.forEach(({ userSelectedAnswer, correctAnswer }) => {
-    console.log({ userSelectedAnswer, correctAnswer })
     if (userSelectedAnswer == null) unanswered++ 
     else if (userSelectedAnswer === correctAnswer) correct++ 
     else incorrect++ 
