@@ -1,8 +1,10 @@
 import { useQuestionData } from "./hooks/useQuestionData"
-import { Box, Typography, Paper, Stack, Divider } from "@mui/material"
+import { Box, Typography, Paper, Stack, Divider, Button } from "@mui/material"
+import { useQuestionStore } from "./store/questions"
 
 export const Footer = () => {
   const { correct, incorrect, unanswered } = useQuestionData()
+  const reset = useQuestionStore(state => state.reset)
 
   const stats = [
     { label: `${correct} correct`, color: "", icon: "✅" },
@@ -40,6 +42,14 @@ export const Footer = () => {
           </Paper>
         ))}
       </Stack>
+      <Button 
+        fullWidth 
+        variant="outlined" 
+        onClick={() => reset()}
+        sx={{ mt: 2 }}
+      >
+        Reset game        
+      </Button>
     </Box>
   )
 }

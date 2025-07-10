@@ -10,13 +10,13 @@ interface State {
   selectedAnswer: (questionId: number, answerIndex: number) => void
   goNextQuestion: () => void
   goPreviusQuestion: () => void
+  reset: () => void 
 }
 
 export const useQuestionStore = create<State>()(persist((set, get) => {
   return {
     questions: [],
     currentQuestion: 0,
-
     fetchQuestion: async (limit: number) => {
       const response = await fetch('http://localhost:5173/data.json')
       const json = await response.json()
@@ -24,7 +24,6 @@ export const useQuestionStore = create<State>()(persist((set, get) => {
       const questions = json.sort(() => Math.random() - 0.5).slice(0, limit)
       set({ questions })
     },
-
     selectedAnswer: (questionId: number, answerIndex: number) => {
       // Get current questions from the global state
       const { questions } = get()
@@ -49,7 +48,6 @@ export const useQuestionStore = create<State>()(persist((set, get) => {
       // Update state with the modified questions array
       set({ questions: newQuestions })
     },
-
     goNextQuestion: () => {
       const { currentQuestion, questions } = get()
       const nextQuestion = currentQuestion + 1
@@ -65,7 +63,9 @@ export const useQuestionStore = create<State>()(persist((set, get) => {
       if (previusQuestion >= 0) {
         set({ currentQuestion: previusQuestion })
       }
-    }
+    },
+    reset: () => set({ currentQuestion: 0, questions: [] })
+    
   }
 }, {
   name: 'questions'
