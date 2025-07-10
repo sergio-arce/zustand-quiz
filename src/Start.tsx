@@ -6,7 +6,7 @@ export const Start = () => {
   const fetchQuestions = useQuestionStore(state => state.fetchQuestion)
 
   const handleClick = () => {
-    fetchQuestions(5)
+    fetchQuestions(3)
   }
 
   return (
